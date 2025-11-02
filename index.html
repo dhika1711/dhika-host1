@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Alya 💖</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body { background: linear-gradient(to bottom, #ffe4ec, #faf5ff, #ffffff); overflow-x: hidden; }
+    .heart { position: fixed; color: #ff6b9d; font-size: 24px; animation: float 6s ease-in infinite; opacity: 0.8; }
+    @keyframes float { 0% { transform: translateY(0) scale(1); opacity: 0.8; } 100% { transform: translateY(-100vh) scale(1.4); opacity: 0; } }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-6 text-center">
+  <div class="bg-white bg-opacity-70 backdrop-blur-md rounded-2xl shadow-2xl p-8 max-w-md w-full relative">
+    <h1 class="text-3xl font-extrabold text-pink-600 animate-pulse">forr Alyaaa 💖</h1>
+    <p class="mt-4 text-gray-700">Hai Alll 😚<br>Ada sesuatu yang pengenn guehh bilang... tapi pencet tombol di bawah ini dulu yaa!</p>
+
+    <button id="openBtn" class="mt-6 px-6 py-3 rounded-full bg-pink-500 hover:bg-pink-600 text-white font-semibold shadow-lg transition-transform transform active:scale-95">Buka Pesan ❤️</button>
+
+    <p class="mt-6 text-gray-400 text-sm">Dibuat khusus untuk Alya shabrina zalianty • 100% cinta tulus 💌</p>
+  </div>
+
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-40 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full text-center relative">
+      <button id="closeBtn" class="absolute top-3 right-4 text-gray-500">✕</button>
+      <h2 class="text-2xl font-bold">Alyaa, bolehh gaa kaloo guehh...?</h2>
+      <p class="mt-4 text-gray-700 leading-relaxed">Alyaa, dari pertama kali guaa kenall samaa loo, guaa tuu ngerasa dunia sedikit lebih cerah. Guaa suka caraa loo ketawaa, cara loo peduli, dan guaa juga nyamann bangett kalo lagii samaa luu. Sebenernyaa sii gua pengenn lebih dari sekedar temenn hohoho 😳💕<br><br>Do you wanna be ma girlfriend alll????</p>
+      <div class="mt-6 flex justify-center gap-4">
+        <button id="yesBtn" class="px-5 py-2 rounded-full bg-green-500 hover:bg-green-600 text-white font-semibold animate-pulse">yess 💚</button>
+        <button id="noBtn" class="px-5 py-2 rounded-full border border-gray-200 text-gray-700 bg-white">Maaf, belum siap</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const openBtn = document.getElementById('openBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+
+    openBtn.onclick = () => {
+      modal.classList.remove('hidden');
+      spawnHearts(20);
+    };
+    closeBtn.onclick = () => modal.classList.add('hidden');
+    noBtn.onclick = () => {
+      alert('Terima kasih sudah jujur.');
+      modal.classList.add('hidden');
+    };
+    yesBtn.onclick = () => {
+      spawnHearts(40);
+      alert('YEAY!! diterimaa ALYAAAA 💖');
+    };
+
+    function spawnHearts(num) {
+      for (let i = 0; i < num; i++) {
+        const heart = document.createElement('div');
+        heart.innerHTML = '❤️';
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = 3 + Math.random() * 3 + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+    }
+  </script>
+</body>
+</html>
